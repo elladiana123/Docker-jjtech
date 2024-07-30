@@ -48,7 +48,7 @@ docker run -it ubuntu bash : to start the ubuntu container and log into it
 
 cat /etc/*release* : to list OS details of the container
 
-docker commit <container ID> <name>
+docker commit <container ID> <name> : To creat a new immage from a container
 
 docker exec -it <containerID> bash
 
@@ -73,6 +73,14 @@ ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
 docker build -t <image-name:1.0 > .
 
 docker run --name <container name> -d -p 8000:8080 <image-name:tag>
+
+#####################################################
+Docker Registry
+
+docker tag <existing-image-name:tag> <image-name:tag>
+docker login -u <username> -p <password> ### TO login to docker registry
+docker push <image-name:tag>  ### TO push image to docker registry
+docker pull <image-name:tag> ### TO pull image from docker registry
 
 
 
@@ -103,8 +111,26 @@ docker run --name <name of container> -d -p 8080:80 --network <name of network> 
 
 docker exec -it <name of container> bash 
 
-# Update container: apt update -y
-# install ping: apt install inetutils-ping -y
+# Update container: 
+
+# apt update -y
+# apt-get install -y iputils-ping  ##########or####### install ping: apt install inetutils-ping -y
 
 # ping <ip of other container>
 
+172.21.0.2  > Container B
+
+172.20.0.2  > Container A
+
+172.20.0.3  > Container C
+
+###########################################
+Docker compose
+###########################################
+
+docker-compose up -d      # To start containers in detached mode
+docker-compose down       # To stop containers
+docker-compose ps        # To list running containers
+docker-compose logs       # To view logs of running containers
+docker-compose rm -f      # To remove containers
+doc

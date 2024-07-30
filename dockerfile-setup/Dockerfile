@@ -1,6 +1,6 @@
 FROM nginx:1.25.1-alpine
 
-LABEL maintainer="JJTECH"
+LABEL maintainer="anselme"
 
 COPY src/html /usr/share/nginx/html
 
